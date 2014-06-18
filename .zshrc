@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export DOTFILES=$HOME/Dropbox/mac/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/.oh-my-zsh
 
 # Set name of the theme to load.
