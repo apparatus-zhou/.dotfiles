@@ -136,3 +136,6 @@ function cd() {
         return $?
     fi
 }
+
+## pyenv
+# eval "$(pyenv init -)"
