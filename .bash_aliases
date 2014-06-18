@@ -9,7 +9,6 @@ alias df='df -h'
 alias lg='ll | grep'
 alias pg='ps aux | grep'
 
-alias tmux='tmux -2'
 alias tmuxa='tmux a || tmux'
 
 alias rmds='find . -name ".DS_Store" -delete'

@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
-export DOTFILES=$HOME/.dotfiles
-export ZSH=$DOTFILES/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,21 +52,26 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f $DOTFILES/.bash_aliases ]; then
-    source $DOTFILES/.bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
 fi
 
-if [ -f $DOTFILES/zsh/activate.sh ]; then
-    source $DOTFILES/zsh/activate.sh
+if [ -f ~/.dotfiles/zsh/activate.sh ]; then
+    source ~/.dotfiles/zsh/activate.sh
 fi
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+# export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/user/local/sbin:/usr/local/bin:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
+
+local GPATH="$(brew --prefix coreutils)/libexec"
+export PATH="$GPATH/gnubin:$PATH"
+export MANPATH="$GPATH/gnuman:$MANPATH"
 
 # You may need to manually set your language environment
- export LANG=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -123,38 +127,6 @@ function git_user_verify() {
         fi
     fi
 }
-
-# define auto_virtualenv to make autoenv better for virtualenv
-# function autoenv_virtualenv() {
-    # typeset venv
-    # venv="$1"
-    # if [[ -n "$VIRTUAL_ENV" ]]; then
-        # source "$VIRTUAL_ENV/bin/activate"
-    # fi
-    # if [[ "${VIRTUAL_ENV:t}" != "$venv" ]]; then
-        # # verify virtualenvwrapper installed
-        # if which virtualenvwrapper.sh 1>/dev/null; then
-            # source virtualenvwrapper.sh
-        # else
-            # echo "ERROR: virtualenvwrapper not installed."
-            # exit $?
-        # fi
-
-        # # activate or create virtualenv
-        # if workon | grep -q "^$1$"; then
-            # workon $1
-        # else
-            # echo -n "$1 doesn't exist, creat now? [y/N] "
-            # read answer
-            # if [[ "$answer" == "y" ]]; then
-                # mkvirtualenv $1
-                # if [[ -e "requirements.txt" ]]; then
-                    # pip install -U -r requirements.txt
-                # fi
-            # fi
-        # fi
-    # fi
-# }
 
 function cd() {
     if builtin cd "$@"; then
